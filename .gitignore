@@ -3,8 +3,8 @@
 .env.local
 .env.production
 
-# RSA ključevi
-keys/private.pem
+server/keys/private.pem
+server/keys/public.pem
 
 # Node modules
 node_modules/
