@@ -1,0 +1,36 @@
+# Environment varijable
+.env
+.env.local
+.env.production
+
+# RSA ključevi
+keys/private.pem
+
+# Node modules
+node_modules/
+server/node_modules/
+client/node_modules/
+
+# Build outputi
+dist/
+client/dist/
+server/dist/
+
+# Prisma
+prisma/migrations/
+
+# Logovi
+*.log
+npm-debug.log*
+
+# OS fajlovi
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Fontovi (opciono, veliki su)
+server/fonts/dejavu.zip
+server/fonts/dejavu-fonts-ttf-2.37/

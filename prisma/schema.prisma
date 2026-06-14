@@ -1,0 +1,42 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../server/node_modules/.prisma/client"
+}
+
+model ChatRezultat {
+  id             String   @id @default(uuid())
+  korisnikId     String
+  korisnik       Korisnik @relation(fields: [korisnikId], references: [id])
+  pdf            Bytes
+  adminKomentar  String?
+  kreiranAt      DateTime @default(now())
+}
+
+model ApiUsage {
+  id     String @id @default(uuid())
+  datum  String @unique
+  brojac Int    @default(0)
+}
+enum Role {
+  USER
+  ADMIN
+}
+model Korisnik {
+  id            String    @id @default(uuid())
+  ime           String
+  prezime       String
+  email         String    @unique
+  lozinka       String
+  datumRodjenja DateTime
+  isVerified    Boolean   @default(false)
+  otpCode       String?
+  otpExpiresAt  DateTime?
+  createdAt     DateTime  @default(now())
+  role          Role     @default(USER)
+  chatRezultati ChatRezultat[]
+}
